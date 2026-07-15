@@ -13,6 +13,7 @@ return new class extends Migration {
             $table->text('description')->nullable();
             $table->string('screenshot')->nullable(); // Path atau URL gambar
             $table->string('github_link')->nullable();
+            $table->date('tgl_upload')->nullable();
             $table->timestamps();
         });
     }
