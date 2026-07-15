@@ -14,7 +14,8 @@ class BerandaFrontendController extends Controller
     public function index()
     {
         $latestProject = Project::orderBy('tgl_upload', 'desc')->first();
-        return view('index', compact('latestProject'));
+        $totalProjects = Project::count();
+        return view('index', compact('latestProject', 'totalProjects'));
     }
 
     /**

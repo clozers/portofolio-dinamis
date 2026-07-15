@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BerandaBackend;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class BerandaBackendController extends Controller
@@ -12,7 +13,9 @@ class BerandaBackendController extends Controller
      */
     public function index()
     {
-        return view('admin.v_beranda.index');
+        $totalProjects = Project::count();
+        $projectsWithGithub = Project::whereNotNull('github_link')->where('github_link', '!=', '')->count();
+        return view('admin.v_beranda.index', compact('totalProjects', 'projectsWithGithub'));
     }
 
     /**
